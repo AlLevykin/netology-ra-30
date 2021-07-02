@@ -8,6 +8,7 @@ function Calendar({ date }) {
         month: months[date.getMonth()],
         day: date.getDate(),
         dayOfWeek: date.getDay(),
+        firstdayOfWeek: new Date(date.getFullYear(), date.getMonth(), 1).getDay(),
         lastdayOfWeek: new Date(date.getFullYear(), date.getMonth() + 1, 0).getDay(),
         daysInCurrentMonth: new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate(),
         daysInPrevMonth: new Date(date.getFullYear(), date.getMonth(), 0).getDate()
@@ -18,14 +19,14 @@ function Calendar({ date }) {
         let columns = [];
 
         for (let i = 1; i < 8; i++) {
-            let day = i - (dateObj.dayOfWeek === 0 ? 6 : dateObj.dayOfWeek - 2) + week * 7;
+            let day = i - (dateObj.firstdayOfWeek === 0 ? 6 : dateObj.firstdayOfWeek - 1) + week * 7;
             let className = '';
 
             if (day < 1) {
                 day = dateObj.daysInPrevMonth + day;
                 className = 'ui-datepicker-other-month';
             } else if (day > dateObj.daysInCurrentMonth) {
-                day = i - dateObj.lastdayOfWeek;
+                day = day - dateObj.daysInCurrentMonth;
                 className = 'ui-datepicker-other-month';
             } else if (day === dateObj.day) {
                 className = 'ui-datepicker-today';
@@ -98,6 +99,9 @@ function Calendar({ date }) {
                         <tr>
                             {TableRow(4)}
                         </tr>
+                        <tr>
+                            {TableRow(5)}
+                        </tr>                        
                     </tbody>
                 </table>
             </div>
