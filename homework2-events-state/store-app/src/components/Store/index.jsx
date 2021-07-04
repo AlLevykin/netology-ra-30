@@ -3,7 +3,7 @@ import IconSwitch from './IconSwitch';
 import ListView from './ListView';
 import './Store.css';
 
-function Store({ caption, products }) {
+function Store({ brand, products }) {
 
     const [viewType, setState] = useState(0);
 
@@ -28,11 +28,15 @@ function Store({ caption, products }) {
     }
 
     return (
-        <div>
-            <h1>{caption}</h1>
-            <IconSwitch icon={viewTypes[viewType].icon} onClick={changeViewType} />
-            <ListView products={products} viewType={viewTypes[viewType].name}/>
-        </div>
+        <>
+            <div className="navbar">
+                <h1>{brand}</h1>
+                <div className="iconswitch">
+                    <IconSwitch icon={viewTypes[viewType].icon} onClick={changeViewType} />
+                </div>
+            </div>
+            <ListView viewType={viewTypes[viewType].name} products={products} />
+        </>
     );
 }
 

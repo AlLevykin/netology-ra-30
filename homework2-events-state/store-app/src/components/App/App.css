@@ -1,5 +1,5 @@
-body{
-  max-width: 900px;
-  float: none;
-  margin: auto; 
+@import url(https://fonts.googleapis.com/css?family=Muli:400,300italic,300,400italic);
+body,
+html {
+  font-family: muli;
 }

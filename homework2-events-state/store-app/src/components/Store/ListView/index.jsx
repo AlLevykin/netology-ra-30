@@ -1,10 +1,13 @@
 import ShopItem from "../ShopItem";
 
-function ListView() {
+function ListView({ viewType, products }) {
     return (
-        <div>
-            <h1>ListView</h1>
-            <ShopItem />
+        <div className="listview">
+            {products.map((product) => {
+                return (
+                    <ShopItem key={product.id} viewType={viewType} product={product} />
+                );
+            })}
         </div>
     );
 }
