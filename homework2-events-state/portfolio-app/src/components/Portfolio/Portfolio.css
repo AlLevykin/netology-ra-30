@@ -1,0 +1,21 @@
+.toolbar button {
+    font-size: 1rem;
+    font-weight: normal;
+    text-decoration: none;
+    cursor: pointer;
+    display: inline-block;
+    line-height: normal;
+    padding: .5rem 1rem;
+    margin: 0;
+    height: auto;
+    border: 1px solid;
+    vertical-align: middle;
+    -webkit-appearance: none;
+    color: gray;
+    background-color: white;
+}
+
+.toolbar_selectedbutton {
+    color: white !important;
+    background-color: gray !important;
+}
