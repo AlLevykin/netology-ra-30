@@ -1,12 +1,13 @@
 function Toolbar({ filters, selected, onSelectFilter }) {
     return (
-        <div className="toolbar">
+        <div className="portfolio_toolbar">
             {filters.map((filter) => {
                 return (
                     <button
                         key={filter}
-                        className={(filter === selected) ? 'toolbar_selectedbutton' : ''}
-                        onClick={() => onSelectFilter(filter)}>{filter}
+                        className={(filter === selected) ? 'portfolio_toolbar_selectedbutton' : ''}
+                        onClick={() => onSelectFilter(filter)}>
+                        {filter}
                     </button>
                 );
             })}

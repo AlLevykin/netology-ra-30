@@ -4,14 +4,14 @@ import './Portfolio.css';
 
 function Portfolio({ portfolio }) {
 
-    const INITIAL_FILTER = 'All'; 
+    const SHOW_ALL = 'All';
 
-    const filters = portfolio.reduce((categories, item) => { 
+    const filters = portfolio.reduce((categories, item) => {
         if (categories.indexOf(item.category) === -1) categories.push(item.category);
         return [...categories];
-    }, [INITIAL_FILTER]);
+    }, [SHOW_ALL]);
 
-    const [currentFilter, setState] = useState(INITIAL_FILTER);
+    const [currentFilter, setState] = useState(SHOW_ALL);
 
     const onSelectFilter = (filter) => {
         setState(filter);
@@ -21,6 +21,15 @@ function Portfolio({ portfolio }) {
         <>
             <h1>Portfolio</h1>
             <Toolbar filters={filters} selected={currentFilter} onSelectFilter={onSelectFilter} />
+            <div className="portfolio_tiles">
+                {
+                    (
+                        (currentFilter === SHOW_ALL) ?
+                            [...portfolio] :
+                            portfolio.filter((item) => { return item.category === currentFilter })
+                    ).map((item) => { return <img key={item.id} src={item.img} alt={item.category} /> })
+                }
+            </div>
         </>
     );
 }
