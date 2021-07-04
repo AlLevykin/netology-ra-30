@@ -1,0 +1,163 @@
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+.material-icons {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  /* Preferred icon size */
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+  /* Support for IE. */
+  font-feature-settings: 'liga';
+}
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  background-color: lightgrey;
+  border-bottom: 1px solid gray;
+  padding: 0.5em;
+  width: 100%;
+  z-index: 100;
+}
+
+.listview {
+  position: absolute;
+  top: 7em;
+  width: 90vw;
+  float: none;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.iconswitch {
+  margin-right: 1.5em;
+  direction: rtl;
+}
+
+.iconswitch button {
+  height: 5em;
+  width: 5em;
+}
+
+.shopitem {
+  padding: 0.5em;
+}
+
+.shopitem img {
+  display: block;
+}
+
+.shopitem_price {
+  color: red;
+  margin-top: auto;
+  margin-bottom: auto;
+  display: grid;
+  grid-template-columns: 50% 50%;
+}
+
+.shopitem_price button {
+  color: red;
+  border-color: red;
+}
+
+.shopitem_color {
+  font-weight: bold;
+}
+
+.shopitem_cards {
+  margin: 0.5em;
+  float: left;
+  width: calc(30vw - 2em);
+  box-shadow: 0 0 0.5em rgba(0, 0, 0, 0.5);
+}
+
+.shopitem_cards img {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 2em;
+  margin-bottom: 2em;
+  box-shadow: 0 0 0.5em rgba(0, 0, 0, 0.5);
+  width: 20vw;
+}
+
+.shopitem_caption_cards {
+  text-align: center;
+}
+
+.shopitem_color_cards {
+  text-align: center;
+}
+
+.shopitem_price_cards {
+  font-size: xx-large;
+  font-weight: bold;
+}
+
+.shopitem_price_cards button {
+  font-size: large;
+  font-weight: bold;
+  border-radius: 3em;
+}
+
+.shopitem_tiles {
+  float: left;
+  width: calc(10vw - 2em);
+  border: 1px solid silver;
+}
+
+.shopitem_tiles img {
+  margin-left: auto;
+  margin-right: auto;
+  width: 80px;
+  height: 80px;
+}
+
+.shopitem_caption_tiles {
+  display: none;
+}
+
+.shopitem_color_tiles {
+  display: none;
+}
+
+.shopitem_cart_tiles {
+  display: none;
+}
+
+.shopitem_list {
+  display: grid;
+  grid-template-columns: 25% 25% 25% 25%;
+  border-bottom: 1px solid silver;
+}
+
+.shopitem_price_list {
+  font-size: xx-large;
+  font-weight: bold;
+}
+
+.shopitem_price_list button {
+  font-size: large;
+  font-weight: bold;
+  border-radius: 3em;
+  height: 100%;
+}
+
+.shopitem_list img {
+  width: 100px;
+  height: 100px;
+}
