@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { useState } from 'react';
 import IconSwitch from './IconSwitch';
 import ListView from './ListView';
@@ -38,6 +39,11 @@ function Store({ brand, products }) {
             <ListView viewType={viewTypes[viewType].name} products={products} />
         </>
     );
+}
+
+Store.propTypes = {
+    brand: PropTypes.string.isRequired,
+    products: PropTypes.instanceOf(Array).isRequired
 }
 
 export default Store;

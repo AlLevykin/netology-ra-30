@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 function ShopItem({ viewType, product }) {
     return (
         <div className={`shopitem shopitem_${viewType}`}>
@@ -12,6 +14,17 @@ function ShopItem({ viewType, product }) {
             </div>
         </div>
     );
+}
+
+ShopItem.propTypes = {
+    viewType: PropTypes.string.isRequired,
+    product: PropTypes.shape({
+        id: PropTypes.number.isRequired,
+        name: PropTypes.string.isRequired, 
+        price: PropTypes.number.isRequired,  
+        color: PropTypes.string.isRequired,
+        img: PropTypes.string.isRequired      
+    }).isRequired
 }
 
 export default ShopItem;
