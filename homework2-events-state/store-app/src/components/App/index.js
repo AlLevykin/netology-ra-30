@@ -1,9 +1,10 @@
+import Store from '../Store';
 import './App.css';
 
 function App() {
   return (
     <div className="App">
-
+      <Store />
     </div>
   );
 }
