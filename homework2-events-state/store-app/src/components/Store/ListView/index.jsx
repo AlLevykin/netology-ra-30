@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import ShopItem from "../ShopItem";
 
 function ListView({ viewType, products }) {
@@ -10,6 +11,13 @@ function ListView({ viewType, products }) {
             })}
         </div>
     );
+}
+
+ListView.propTypes = {
+    viewType: PropTypes.string.isRequired,
+    products: PropTypes.arrayOf(PropTypes.shape({
+        id: PropTypes.number.isRequired
+    })).isRequired
 }
 
 export default ListView;

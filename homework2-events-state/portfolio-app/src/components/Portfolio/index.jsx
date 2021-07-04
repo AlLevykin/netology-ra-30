@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { useState } from 'react';
 import Toolbar from "./Toolbar";
 import './Portfolio.css';
@@ -32,6 +33,14 @@ function Portfolio({ portfolio }) {
             </div>
         </>
     );
+}
+
+Portfolio.propTypes = {
+    portfolio: PropTypes.arrayOf(PropTypes.shape({
+        img: PropTypes.string.isRequired,
+        category: PropTypes.string.isRequired,
+        id: PropTypes.number.isRequired,
+    })).isRequired
 }
 
 export default Portfolio;
