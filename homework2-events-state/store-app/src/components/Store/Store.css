@@ -79,6 +79,12 @@
   font-weight: bold;
 }
 
+.shopitem_caption {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .shopitem_cards {
   margin: 0.5em;
   float: left;
@@ -128,7 +134,7 @@
 }
 
 .shopitem_caption_tiles {
-  display: none;
+  font-size: 0.75em;
 }
 
 .shopitem_color_tiles {
