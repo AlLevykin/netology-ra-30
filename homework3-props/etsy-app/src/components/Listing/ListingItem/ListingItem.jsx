@@ -1,8 +1,9 @@
 import PropTypes from 'prop-types';
+import Stars from '../Stars';
 
 function ListingItem({ item }) {
 
-    const { url, MainImage: {url_570xN}, title, price, currency_code, quantity } = item;
+    const { url, MainImage: {url_570xN}, title, price, currency_code, quantity, stars } = item;
 
     const Price = () => {
         switch (currency_code) {
@@ -36,6 +37,7 @@ function ListingItem({ item }) {
                     </a>
                 </div>
                 <div className="item-details">
+                    <Stars count={stars}/>
                     <p className="item-title">{title}</p>
                     <p className="item-price"><Price /></p>
                     <p className={`item-quantity level-${quantity < 10 ? "low" : ((quantity < 20) ? "medium" : "high")}`}>{quantity} left</p>
@@ -54,7 +56,8 @@ ListingItem.propTypes = {
         title: PropTypes.string.isRequired, 
         price: PropTypes.string.isRequired,  
         currency_code: PropTypes.string.isRequired,
-        quantity: PropTypes.number.isRequired      
+        quantity: PropTypes.number.isRequired,
+        stars: PropTypes.number.isRequired     
     }).isRequired
 }
 
