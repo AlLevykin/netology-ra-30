@@ -11,15 +11,15 @@ function Store({ brand, products }) {
     const viewTypes = [
         {
             name: 'CardsView',
-            icon: 'view_module'
+            nextIcon: 'view_list'
         },
         {
             name: 'TilesView',
-            icon: 'view_comfy'
+            nextIcon: 'view_module'
         },
         {
             name: 'ListView',
-            icon: 'view_list'
+            nextIcon: 'view_comfy'
         }];
 
     const changeViewType = () => {
@@ -32,7 +32,7 @@ function Store({ brand, products }) {
         <div className="Store">
             <h1>{brand}</h1>
             <div className="Store-Switch">
-                <IconSwitch icon={viewTypes[viewType].icon} onClick={changeViewType} />
+                <IconSwitch icon={viewTypes[viewType].nextIcon} onClick={changeViewType} />
             </div>
             <ListView viewType={viewTypes[viewType].name} products={products} />
         </div>
