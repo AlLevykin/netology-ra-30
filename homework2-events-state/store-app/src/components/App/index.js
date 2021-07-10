@@ -41,9 +41,7 @@ const products = [{
 
 function App() {
   return (
-    <>
       <Store brand="Nike Store" products={products} />
-    </>
   );
 }
 
