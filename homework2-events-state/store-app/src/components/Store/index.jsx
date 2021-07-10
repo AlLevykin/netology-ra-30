@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import { useState } from 'react';
 import IconSwitch from './IconSwitch';
-import ListView from './ListView';
+import ListView from './ShopView';
 import './Store.css';
 
 function Store({ brand, products }) {
@@ -10,15 +10,15 @@ function Store({ brand, products }) {
 
     const viewTypes = [
         {
-            name: 'cards',
+            name: 'CardsView',
             icon: 'view_module'
         },
         {
-            name: 'tiles',
+            name: 'TilesView',
             icon: 'view_comfy'
         },
         {
-            name: 'list',
+            name: 'ListView',
             icon: 'view_list'
         }];
 
@@ -29,15 +29,13 @@ function Store({ brand, products }) {
     }
 
     return (
-        <>
-            <div className="navbar">
-                <h1>{brand}</h1>
-                <div className="iconswitch">
-                    <IconSwitch icon={viewTypes[viewType].icon} onClick={changeViewType} />
-                </div>
+        <div className="Store">
+            <h1>{brand}</h1>
+            <div className="Store-Switch">
+                <IconSwitch icon={viewTypes[viewType].icon} onClick={changeViewType} />
             </div>
             <ListView viewType={viewTypes[viewType].name} products={products} />
-        </>
+        </div>
     );
 }
 

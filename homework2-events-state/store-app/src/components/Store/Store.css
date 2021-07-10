@@ -22,148 +22,135 @@
   font-feature-settings: 'liga';
 }
 
-.navbar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  display: grid;
-  grid-template-columns: 50% 50%;
-  background-color: lightgrey;
-  border-bottom: 1px solid gray;
-  padding: 0.5em;
-  width: 100%;
-  z-index: 100;
+.Store-Switch {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  height: 50px;
+  padding: 20px;
 }
 
-.listview {
-  position: absolute;
-  top: 7em;
-  width: 90vw;
-  float: none;
+.Store-Switch button {
+  background: transparent;
+  border: none;
+}
+
+.AddToCart {
+  padding: 10px 15px;
+  outline: none;
+  border: 1px solid var(--color-highlight);
+  border-radius: 35px;
+  font-weight: 700;
+  color: var(--color-highlight);
+  text-transform: uppercase;
+  box-shadow: none;
+  background-color: transparent;
+}
+
+.CardsView {
+  width: 100%;
+  text-align: center;
+}
+
+.CardsView-ShopCard {
+  display: inline-block;
+  margin: 25px;
+  padding: 20px;
+  width: 200px;
+  text-align: center;
+  box-shadow: 1px 4px 10px var(--color-shadow);
+  background-color: var(--color-content-background);
+}
+
+.CardsView-ShopCardTitle {
+  margin-bottom: 8px;
+  font-weight: 300;
+  font-size: 22px;
+  text-transform: uppercase;
+}
+
+.CardsView-ShopCardSubtitle {
+  display: block;
+  color: var(--color-secondary);
+  font-size: 14px;
+  text-align: center;
+}
+
+.CardsView-ShopCardImage {
+  height: 120px;
+  background-size: cover;
+  background-position: bottom;
+}
+
+.CardsView-ShopCardFooter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.CardsView-ShopCardPrice {
+  color: var(--color-highlight);
+}
+
+.ListView {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-gap: 2px 0;
+  width: 100%;
+}
+
+.ListView-ShopItemCell {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+  border: none;
+  background-color: var(--color-content-background);
+}
+
+.ListView-ShopItemImage {
+  height: 100px;
+}
+
+.ListView-ShopItemImageCell {
+  justify-content: flex-start;
+}
+
+.ListView-ShopItemAdd {
+  justify-content: flex-end;
+  padding-right: 10px;
+}
+
+.ListView-ShopItemName {
+  font-size: 22px;
+  text-transform: uppercase;
+}
+
+.ListView-ShopItemPrice {
+  color: var(--color-highlight);
+}
+
+.TilesView-ShopItemCell {
+  display: inline-block;
+  width: calc(10vw - 2em);
+  text-align: center;
+  padding: 5px;
+  margin: 5px;
+  border: 1px solid silver;
+  background-color: var(--color-content-background);
+}
+
+.TilesView-ShopCardImage {
   margin-left: auto;
   margin-right: auto;
+  width: 50%;
+  height: auto
 }
 
-.iconswitch {
-  margin-right: 1.5em;
-  direction: rtl;
-}
-
-.iconswitch button {
-  height: 5em;
-  width: 5em;
-}
-
-.shopitem {
-  padding: 0.5em;
-}
-
-.shopitem img {
-  display: block;
-}
-
-.shopitem_price {
-  color: red;
-  margin-top: auto;
-  margin-bottom: auto;
-  display: grid;
-  grid-template-columns: 50% 50%;
-}
-
-.shopitem_price button {
-  color: red;
-  border-color: red;
-}
-
-.shopitem_color {
-  font-weight: bold;
-}
-
-.shopitem_caption {
+.TilesView-ShopCardTitle {
+  margin: auto;
+  font-size: 0.75em;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-}
-
-.shopitem_cards {
-  margin: 0.5em;
-  float: left;
-  width: calc(30vw - 2em);
-  box-shadow: 0 0 0.5em rgba(0, 0, 0, 0.5);
-}
-
-.shopitem_cards img {
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 2em;
-  margin-bottom: 2em;
-  box-shadow: 0 0 0.5em rgba(0, 0, 0, 0.5);
-  width: 20vw;
-}
-
-.shopitem_caption_cards {
-  text-align: center;
-}
-
-.shopitem_color_cards {
-  text-align: center;
-}
-
-.shopitem_price_cards {
-  font-size: xx-large;
-  font-weight: bold;
-}
-
-.shopitem_price_cards button {
-  font-size: large;
-  font-weight: bold;
-  border-radius: 3em;
-}
-
-.shopitem_tiles {
-  float: left;
-  width: calc(10vw - 2em);
-  border: 1px solid silver;
-}
-
-.shopitem_tiles img {
-  margin-left: auto;
-  margin-right: auto;
-  width: 80px;
-  height: 80px;
-}
-
-.shopitem_caption_tiles {
-  font-size: 0.75em;
-}
-
-.shopitem_color_tiles {
-  display: none;
-}
-
-.shopitem_cart_tiles {
-  display: none;
-}
-
-.shopitem_list {
-  display: grid;
-  grid-template-columns: 25% 25% 25% 25%;
-  border-bottom: 1px solid silver;
-}
-
-.shopitem_price_list {
-  font-size: xx-large;
-  font-weight: bold;
-}
-
-.shopitem_price_list button {
-  font-size: large;
-  font-weight: bold;
-  border-radius: 3em;
-  height: 100%;
-}
-
-.shopitem_list img {
-  width: 100px;
-  height: 100px;
 }

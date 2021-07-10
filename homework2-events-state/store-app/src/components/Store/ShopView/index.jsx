@@ -1,9 +1,9 @@
 import PropTypes from 'prop-types';
 import ShopItem from "../ShopItem";
 
-function ListView({ viewType, products }) {
+function ShopView({ viewType, products }) {
     return (
-        <div className="listview">
+        <div className={viewType}>
             {products.map((product) => {
                 return (
                     <ShopItem key={product.id} viewType={viewType} product={product} />
@@ -13,11 +13,11 @@ function ListView({ viewType, products }) {
     );
 }
 
-ListView.propTypes = {
+ShopView.propTypes = {
     viewType: PropTypes.string.isRequired,
     products: PropTypes.arrayOf(PropTypes.shape({
         id: PropTypes.number.isRequired
     })).isRequired
 }
 
-export default ListView;
+export default ShopView;
