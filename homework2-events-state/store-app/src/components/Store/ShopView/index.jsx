@@ -6,7 +6,7 @@ function ShopView({ viewType, products }) {
         <div className={viewType}>
             {products.map((product) => {
                 return (
-                    <ShopItem key={product.id} viewType={viewType} product={product} />
+                    product && <ShopItem key={product.id} viewType={viewType} product={product} />
                 );
             })}
         </div>
