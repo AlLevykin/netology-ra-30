@@ -11,11 +11,11 @@ function Store({ brand, products }) {
     const viewTypes = [
         {
             name: 'CardsView',
-            nextIcon: 'view_list'
+            nextIcon: 'view_comfy'
         },
         {
             name: 'TilesView',
-            nextIcon: 'view_comfy'
+            nextIcon: 'view_list'
         },
         {
             name: 'ListView',
