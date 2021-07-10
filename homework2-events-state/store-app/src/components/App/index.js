@@ -37,7 +37,10 @@ const products = [{
   price: 150,
   color: "green",
   img: "https://raw.githubusercontent.com/netology-code/ra16-homeworks/master/events-state/layouts/img/5.jpg"
-}];
+},
+undefined,
+null
+];
 
 function App() {
   return (
