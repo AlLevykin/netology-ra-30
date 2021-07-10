@@ -15,11 +15,11 @@ function Store({ brand, products }) {
         },
         {
             name: 'TilesView',
-            nextIcon: 'view_module'
+            nextIcon: 'view_comfy'
         },
         {
             name: 'ListView',
-            nextIcon: 'view_comfy'
+            nextIcon: 'view_module'
         }];
 
     const changeViewType = () => {
