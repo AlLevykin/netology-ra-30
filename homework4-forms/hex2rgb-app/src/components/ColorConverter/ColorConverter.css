@@ -1,0 +1,38 @@
+body, html {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+}
+
+.ColorConverter-Container {
+    min-width: 100%;
+    min-height: 100%;
+    position: absolute;
+}
+
+.ColorConverter-Form {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -150px;
+    margin-left: -150px;
+    width: 300px;
+    height: 300px;
+}
+
+.ColorConverter-Form input {
+    border: 0;
+    border-radius: 0;
+    padding: 0;
+    text-align: center;
+    font-size: xx-large;
+    width: 100%;
+}
+
+.ColorConverter-Label {
+    color: white;
+    margin-top: 10px;
+    text-align: center;
+    font-size: xx-large;
+    width: 100%;
+}
