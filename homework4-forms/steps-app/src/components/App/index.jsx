@@ -1,8 +1,8 @@
+import StepsDashboard from "../StepsDashboard";
+
 function App() {
   return (
-    <div>
-      Steps
-    </div>
+    <StepsDashboard />
   );
 }
 
