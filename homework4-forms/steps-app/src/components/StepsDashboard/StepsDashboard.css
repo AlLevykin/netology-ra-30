@@ -1,0 +1,76 @@
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+.material-icons {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  /* Preferred icon size */
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+  /* Support for IE. */
+  font-feature-settings: 'liga';
+}
+
+.StepsDashboard {
+    position: absolute;
+    width: 800px;
+    left: calc(50vw - 400px);
+}
+
+.StepsDashboard-Main {
+    border-radius: 10px;
+    border: 1px solid black;
+    margin-top: 1em;
+}
+
+.StepsDashboard-Row {
+    display: flex;
+    justify-content: space-around;
+}
+
+.StepsDashboard-Cell {
+    width: 30%;
+    text-align: center;
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+.StepsDashboard-Field {
+    text-align: left;
+}
+
+.StepsDashboard-Field label {
+    display: block;    
+}
+
+.StepsDashboard-Field input {
+    display: block;
+    width: 100%;
+    margin-top: 1em;
+}
+
+.StepsDashboard-Button {
+    width: 100%;
+    height: 100%; 
+    background-color: transparent;
+    border-radius: 10px;
+    border: 1px solid black;
+    cursor: pointer;
+}
+
+.StepsDashboard-Action {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
