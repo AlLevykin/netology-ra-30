@@ -6,6 +6,14 @@ function Card(props) {
 
     const children = React.Children.toArray(props.children);
 
+    const getElemName = (elem) => {
+        if (typeof elem === 'string') {
+            return elem;
+        } else {
+            return elem.type.name ? elem.type.name : elem.type
+        }
+    }
+
     return (
         <>
             {
@@ -14,11 +22,7 @@ function Card(props) {
                     {
                         props.freestyled ?
                             children :
-                            children.filter(elem => types.indexOf(
-                                elem.type.name ?
-                                elem.type.name :
-                                elem.type
-                            ) > -1)
+                            children.filter(elem => types.indexOf(getElemName(elem)) > -1)
                     }
                 </div>
             }
