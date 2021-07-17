@@ -1,5 +1,12 @@
 import React from 'react';
 
+/**
+ * Базовый компонент grid-системы.
+ * @param {Array} props.filter Массив строк, содержащий идентификаторы фильтруемых дочерних элементов.
+ * @param {boolean} props.blacklist Способ фильтрации. 
+ * @param {string} props.className CSS-классы элемента grid-системы. 
+ * @param {any} props.children Контент элемента grid-системы.
+ */
 function GridElement(props) {
 
     const children = React.Children.toArray(props.children);
