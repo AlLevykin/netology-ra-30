@@ -4,6 +4,8 @@ import Col from "../Container/Col";
 import Logo from "../Logo";
 import Search from "../Search";
 import Advertisement from "../Advertisement";
+import Services from "../Services";
+import ServiceCard from "../ServiceCard";
 
 function App() {
   return (
@@ -12,11 +14,19 @@ function App() {
         <Col numOfCols="2" />
         <Col>
           <Row>
-            <Col numOfCols="8">Новости</Col>
-            <Col>Дзен</Col>
+            <Col numOfCols="8">
+              <ServiceCard>
+                <img src="img/news.jpg" className="img-fluid" alt="..." />
+              </ServiceCard>
+            </Col>
+            <Col>
+              <ServiceCard>
+                <img src="img/school.jpg" className="img-fluid" alt="..." />
+              </ServiceCard>
+            </Col>
           </Row>
           <Row>
-            <Col>Сервисы</Col>
+            <Col><Services /> </Col>
           </Row>
         </Col>
       </Row>
@@ -36,15 +46,35 @@ function App() {
         <Col numOfCols="2" />
         <Col>
           <Row>
-            <Col>Погода</Col>
-            <Col>Расписания</Col>
+            <Col>
+              <ServiceCard>
+                <img src="img/links.jpg" className="img-fluid" alt="..." />
+              </ServiceCard>
+            </Col>
+            <Col>
+              <ServiceCard>
+                <img src="img/maps.jpg" className="img-fluid" alt="..." />
+              </ServiceCard>
+            </Col>
           </Row>
           <Row>
-            <Col>Посещаемое</Col>
-            <Col>Телепрограмма</Col>
+          <Col>
+              <ServiceCard>
+                <img src="img/weather.jpg" className="img-fluid" alt="..." />
+              </ServiceCard>
+            </Col>
+            <Col>
+              <ServiceCard>
+                <img src="img/tv.jpg" className="img-fluid" alt="..." />
+              </ServiceCard>
+            </Col>
           </Row>
         </Col>
-        <Col>Эфир</Col>
+        <Col>
+              <ServiceCard>
+                <img src="img/live.jpg" className="img-fluid" alt="..." />
+              </ServiceCard>
+            </Col>
       </Row>
     </Container>
   );

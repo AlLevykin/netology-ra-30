@@ -1,7 +1,7 @@
 function Logo() {
     return (
-        <div className="alert alert-warning" role="alert">
-            Логотип
+        <div className="d-block text-end">
+        <img src="img/ya.jpg" className="img-fluid" alt="..." />            
         </div>
     );
 }
