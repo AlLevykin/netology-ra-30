@@ -1,16 +1,11 @@
 import { useState } from 'react';
 import "./ColorConverter.css";
 
-const HEXtoRGB = (input) => {
+const HEXtoRGB = (input, prev) => {
 
   const darken = (color) => Math.floor(color * 0.7);
 
   let hex = input.replace(/#/g, '');
-  if (hex.length === 3) {
-    hex = hex.split('').map(function (hex) {
-      return hex + hex;
-    }).join('');
-  }
   let result = /^([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})[\da-z]{0,0}$/i.exec(hex);
   if (result) {
     let red = parseInt(result[1], 16);
@@ -24,21 +19,28 @@ const HEXtoRGB = (input) => {
       hex: input
     };
   } else {
-    return {
-      value: 'Error!',
-      rgb: 'rgb(255,0,0)',
-      darken: 'rgb(178,0,0)',
-      hex: input
-    };
+    return (hex.length < 6) ?
+      {
+        ...prev,
+        hex: input
+      }
+      :
+      {
+        value: 'Error!',
+        rgb: 'rgb(255,0,0)',
+        darken: 'rgb(178,0,0)',
+        hex: input
+      };
   }
 }
 
 function ColorConverter() {
   const [color, setColor] = useState(HEXtoRGB('#ffffff'));
 
-  const handleHEXChange = (event) => setColor(
-    HEXtoRGB(event.target.value)
-  );
+  const handleHEXChange = (event) =>
+    setColor((prev) =>
+      HEXtoRGB(event.target.value, prev)
+    );
 
   return (
     <div className="ColorConverter-Container" style={{ background: color.rgb }}>
