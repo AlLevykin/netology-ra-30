@@ -6,4 +6,51 @@
 
 body {
   background-color: white;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.WorldTimeDashboard {
+  position: absolute;
+  width: 940px;
+  left: calc(50vw - 470px);
+}
+
+.WorldTimeDashboard-Row {
+  display: flex;
+  justify-content: space-around;
+}
+
+.WorldTimeDashboard-Cell {
+  width: 30%;
+  text-align: center;
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+.WorldTimeDashboard-Field {
+  text-align: left;
+  width: 30%;
+  text-align: center;
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+.WorldTimeDashboard-Field label {
+  display: block;    
+}
+
+.WorldTimeDashboard-Field input, select {
+  display: block;
+  width: 100%;
+  margin-top: 1em;
+  padding: 1em;
+}
+
+.WorldTimeDashboard-Button {
+  width: 100%;
+  height: 100%; 
+  background-color: transparent;
+  border-radius: 10px;
+  border: 1px solid black;
+  cursor: pointer;
 }

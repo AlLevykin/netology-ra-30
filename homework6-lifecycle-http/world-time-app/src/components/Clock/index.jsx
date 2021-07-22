@@ -25,7 +25,7 @@ class Clock extends React.Component {
 
     tick() {
 
-        let date = moment().tz(this.props.timeZone),
+        let date = moment().tz(this.props.city.time_zone),
             seconds = date.second(),
             minutes = date.minute(),
             hours = date.hour();
@@ -40,6 +40,12 @@ class Clock extends React.Component {
     render() {
         return (
             <div className="clock">
+                <div className="city">
+                    {this.props.city.name}
+                </div>
+                <div>
+                    <button className="btn" onClick={this.props.onClick} />
+                </div>
                 <div className="c1">
                     <div className="c2">
                         <div className="pin">
