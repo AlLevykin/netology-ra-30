@@ -1,0 +1,8 @@
+.sidebar {
+    width: 30vw;
+    position: fixed;
+}
+
+.content {
+    margin-left: calc(30vw + 10px);
+}
