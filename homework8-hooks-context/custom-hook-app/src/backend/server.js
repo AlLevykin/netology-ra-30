@@ -12,6 +12,9 @@ const router = new Router();
 router.get('/data', async (ctx, next) => {
     ctx.response.body = {status: "ok"};
 });
+router.get('/wrongdata', async (ctx, next) => {
+    ctx.response.body = "bla-bla-bla";
+});
 router.get('/error', async (ctx, next) => {
     ctx.response.status = 500;
     ctx.response.body = {status: "Internal Error"};
