@@ -18,12 +18,10 @@ const useJsonFetch = (url, opts) => {
                     const json = await response.json();
                     setData(json);
                 } else {
-                    console.log(response);
                     setError(`${response.status}: ${response.statusText}`);
                 }
             } 
             catch(err) {
-                console.log(err);
                 setError(err.toString());
             }
             finally {
