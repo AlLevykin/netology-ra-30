@@ -103,6 +103,11 @@ const Post = ({ match, history }) => {
                                     onClick={() => setMode(MODE_EDIT)}>
                                     Изменить
                                 </button>
+                                <button
+                                    className="btn btn-secondary btn-sm"
+                                    onClick={() => history.push("/")}>
+                                    Закрыть
+                                </button>                                
                             </div>
                     }
                 </div>
