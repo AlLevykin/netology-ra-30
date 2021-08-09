@@ -7,7 +7,8 @@ import {
   CLEAR_SERVICE_FORM,
   FILTER_SERVICE_LIST,
   FETCH_SERVICE_REQUEST,
-  FETCH_SERVICE_SUCCESS
+  FETCH_SERVICE_SUCCESS,
+  FETCH_SERVICE_FAILURE
 } from '../actions/actionTypes';
 
 export function addService(name, price) {
@@ -46,17 +47,21 @@ export const fetchServicesSuccess = (data) => {
   return { type: FETCH_SERVICE_SUCCESS, payload: data }
 }
 
+export const fetchServicesFailure = (errorText) => {
+  return { type: FETCH_SERVICE_FAILURE, payload: errorText }
+}
+
 export const fetchServices = async dispatch => 
 { 
   dispatch(fetchServicesRequest());
   try {
     const response = await fetch(`${process.env.REACT_APP_API_URL}`);
     if(!response.ok) { 
-      //throw newError(response.statusText); 
+      throw new Error(response.statusText); 
     }
     const data=await response.json();
     dispatch(fetchServicesSuccess(data));
   } 
   catch(e) {
-    //dispatch(fetchServicesFailure(e.message));
+    dispatch(fetchServicesFailure(e.message));
   }}
