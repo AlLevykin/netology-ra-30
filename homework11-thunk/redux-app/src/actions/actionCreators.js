@@ -9,7 +9,7 @@ import {
   FETCH_SERVICE_REQUEST,
   FETCH_SERVICE_SUCCESS,
   FETCH_SERVICE_FAILURE,
-  REMOVE_SERVICE_REQUEST
+  API_SERVICE_REQUEST
 } from '../actions/actionTypes';
 
 export function addService(name, price) {
@@ -52,8 +52,8 @@ export const fetchServicesFailure = (errorText) => {
   return { type: FETCH_SERVICE_FAILURE, payload: errorText }
 }
 
-export function removeServiceRequest(id) {
-  return { type: REMOVE_SERVICE_REQUEST, payload: id };
+export function apiServiceRequest(id) {
+  return { type: API_SERVICE_REQUEST, payload: id };
 }
 
 export const fetchServices = async dispatch => {
@@ -72,7 +72,7 @@ export const fetchServices = async dispatch => {
 }
 
 export const fetchForRemoving = async (id, dispatch) => {
-  dispatch(removeServiceRequest(id));
+  dispatch(apiServiceRequest(id));
   try {
     const response = await fetch(`${process.env.REACT_APP_API_URL}/${id}`, { method: 'DELETE' });
     if (!response.ok) {
@@ -82,5 +82,30 @@ export const fetchForRemoving = async (id, dispatch) => {
   }
   catch (e) {
     fetchServices(dispatch);
+  }
+}
+
+export const fetchForPosting = async (id, name, price, dispatch) => {
+  dispatch(apiServiceRequest(id));
+  try {
+    const response = await fetch(`${process.env.REACT_APP_API_URL}`, 
+    { 
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json;charset=utf-8'
+      },
+      body: JSON.stringify({id, name, price})
+    });
+    if (!response.ok) {
+        throw new Error(response.statusText); 
+    }
+    if (id === 0) {
+      dispatch(addService(name, price));
+    } else {
+      dispatch(editService(id, name, price));
+    }
+  } 
+  catch (e) { 
+    fetchServices(dispatch); 
   }
 }

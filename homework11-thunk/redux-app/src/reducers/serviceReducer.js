@@ -5,7 +5,7 @@ import {
 } from '../actions/actionTypes';
 
 const initialState = {
-  id: '',
+  id: 0,
   name: '',
   price: 0.0
 };

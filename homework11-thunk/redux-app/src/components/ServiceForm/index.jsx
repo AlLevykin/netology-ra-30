@@ -1,8 +1,7 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import {
-  addService,
-  saveService,
+  fetchForPosting,
   changeServiceField,
   clearServiceForm
 } from '../../actions/actionCreators';
@@ -22,12 +21,8 @@ const ServiceForm = () => {
 
   const handleSubmit = event => {
     event.preventDefault();
-    if (item.id === '') {
-      dispatch(addService(item.name, item.price));
-    } else {
-      dispatch(saveService(item.id, item.name, item.price));
-    }
     dispatch(clearServiceForm());
+    fetchForPosting(item.id, item.name, item.price, dispatch);
   };
 
   const handleCancel = () => dispatch(clearServiceForm());
