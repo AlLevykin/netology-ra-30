@@ -4,6 +4,7 @@ import { Trash, Pen } from 'react-bootstrap-icons';
 import { removeService, editService, fetchServices } from '../../actions/actionCreators';
 import { Status } from '../../actions/actionStatuses';
 import Loader from '../Loader';
+import ErrorMessage from '../ErrorMessage';
 
 const ServiceList = () => {
 
@@ -30,7 +31,7 @@ const ServiceList = () => {
       case Status.PENDING:
         return <Loader />
       case Status.ERROR:
-        return <p>error</p>
+        return <ErrorMessage text={data.errorText} />
       default:
         return (
           <ul className="list-group list-group-flush">
