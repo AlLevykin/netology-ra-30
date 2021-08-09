@@ -6,7 +6,8 @@ import {
   CHANGE_SERVICE_FIELD,
   CLEAR_SERVICE_FORM,
   FILTER_SERVICE_LIST,
-  FETCH_SERVICE_REQUEST
+  FETCH_SERVICE_REQUEST,
+  FETCH_SERVICE_SUCCESS
 } from '../actions/actionTypes';
 
 export function addService(name, price) {
@@ -41,6 +42,10 @@ export const fetchServicesRequest = () => {
   return { type: FETCH_SERVICE_REQUEST, payload: null};
 }
 
+export const fetchServicesSuccess = (data) => {
+  return { type: FETCH_SERVICE_SUCCESS, payload: data }
+}
+
 export const fetchServices = async dispatch => 
 { 
   dispatch(fetchServicesRequest());
@@ -50,8 +55,7 @@ export const fetchServices = async dispatch =>
       //throw newError(response.statusText); 
     }
     const data=await response.json();
-    console.log(data);
-    //dispatch(fetchServicesSuccess(data));
+    dispatch(fetchServicesSuccess(data));
   } 
   catch(e) {
     //dispatch(fetchServicesFailure(e.message));

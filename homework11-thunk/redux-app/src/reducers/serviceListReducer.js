@@ -3,7 +3,8 @@ import {
   ADD_SERVICE,
   REMOVE_SERVICE,
   SAVE_SERVICE,
-  FETCH_SERVICE_REQUEST
+  FETCH_SERVICE_REQUEST,
+  FETCH_SERVICE_SUCCESS
 } from '../actions/actionTypes';
 import { Status } from '../actions/actionStatuses';
 
@@ -14,6 +15,8 @@ const serviceListReduser = (state = initialState, action) => {
   let id, name, price;
 
   switch (action.type) {
+    case FETCH_SERVICE_SUCCESS:
+      return {items: [...action.payload], status: Status.SUCCESS, errorText: ''};
     case FETCH_SERVICE_REQUEST:
       return {...state, status: Status.PENDING, errorText: ''};
     case ADD_SERVICE:
