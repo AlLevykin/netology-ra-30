@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Trash, Pen } from 'react-bootstrap-icons';
-import { removeService, editService, fetchServices } from '../../actions/actionCreators';
+import { fetchForRemoving, editService, fetchServices } from '../../actions/actionCreators';
 import { Status } from '../../actions/actionStatuses';
 import Loader from '../Loader';
 import ErrorMessage from '../ErrorMessage';
@@ -19,7 +19,7 @@ const ServiceList = () => {
   useEffect(() => { fetchServices(dispatch) }, [dispatch]);
 
   const handleRemove = id => {
-    dispatch(removeService(id));
+    fetchForRemoving(id, dispatch);
   };
 
   const handleEdit = ({ id, name, price }) => {
@@ -40,20 +40,29 @@ const ServiceList = () => {
                 <span>
                   {item.name} {item.price}
                 </span>
-                <button
-                  type="button"
-                  className="btn btn-success ms-3"
-                  onClick={() => handleEdit(item)}
-                >
-                  <Pen />
-                </button>
-                <button
-                  type="button"
-                  className="btn btn-danger ms-3"
-                  onClick={() => handleRemove(item.id)}
-                >
-                  <Trash />
-                </button>
+                {item.pending ?
+                  <div className="spinner-border text-danger mx-3" role="status">
+                    <span className="visually-hidden">
+                      Loading...</span>
+                  </div>
+                  :
+                  <>
+                    <button
+                      type="button"
+                      className="btn btn-success ms-3"
+                      onClick={() => handleEdit(item)}
+                    >
+                      <Pen />
+                    </button>
+                    <button
+                      type="button"
+                      className="btn btn-danger ms-3"
+                      onClick={() => handleRemove(item.id)}
+                    >
+                      <Trash />
+                    </button>
+                  </>
+                }
               </li>
             ))}
           </ul>);

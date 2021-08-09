@@ -8,7 +8,8 @@ import {
   FILTER_SERVICE_LIST,
   FETCH_SERVICE_REQUEST,
   FETCH_SERVICE_SUCCESS,
-  FETCH_SERVICE_FAILURE
+  FETCH_SERVICE_FAILURE,
+  REMOVE_SERVICE_REQUEST
 } from '../actions/actionTypes';
 
 export function addService(name, price) {
@@ -40,7 +41,7 @@ export function filterServiceList(filter) {
 }
 
 export const fetchServicesRequest = () => {
-  return { type: FETCH_SERVICE_REQUEST, payload: null};
+  return { type: FETCH_SERVICE_REQUEST, payload: null };
 }
 
 export const fetchServicesSuccess = (data) => {
@@ -51,17 +52,35 @@ export const fetchServicesFailure = (errorText) => {
   return { type: FETCH_SERVICE_FAILURE, payload: errorText }
 }
 
-export const fetchServices = async dispatch => 
-{ 
+export function removeServiceRequest(id) {
+  return { type: REMOVE_SERVICE_REQUEST, payload: id };
+}
+
+export const fetchServices = async dispatch => {
   dispatch(fetchServicesRequest());
   try {
     const response = await fetch(`${process.env.REACT_APP_API_URL}`);
-    if(!response.ok) { 
-      throw new Error(response.statusText); 
+    if (!response.ok) {
+      throw new Error(response.statusText);
     }
-    const data=await response.json();
+    const data = await response.json();
     dispatch(fetchServicesSuccess(data));
-  } 
-  catch(e) {
+  }
+  catch (e) {
     dispatch(fetchServicesFailure(e.message));
-  }}
+  }
+}
+
+export const fetchForRemoving = async (id, dispatch) => {
+  dispatch(removeServiceRequest(id));
+  try {
+    const response = await fetch(`${process.env.REACT_APP_API_URL}/${id}`, { method: 'DELETE' });
+    if (!response.ok) {
+      throw new Error(response.statusText);
+    }
+    dispatch(removeService(id));
+  }
+  catch (e) {
+    fetchServices(dispatch);
+  }
+}
