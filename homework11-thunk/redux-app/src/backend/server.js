@@ -10,10 +10,10 @@ app.use(koaBody({ json: true }));
 
 let nextId = 1;
 const services = [
-    { id: nextId++, name: 'Замена стекла', price: 21000, content: 'Стекло оригинал от Apple'},
-    { id: nextId++, name: 'Замена дисплея', price: 25000, content: 'Дисплей оригинал от Foxconn'},
-    { id: nextId++, name: 'Замена аккумулятора', price: 4000, content: 'Новый на 4000 mAh'},
-    { id: nextId++, name: 'Замена микрофона', price: 2500, content: 'Оригинальный от Apple'},
+    { id: nextId++, name: 'Замена стекла', price: 21000},
+    { id: nextId++, name: 'Замена дисплея', price: 25000},
+    { id: nextId++, name: 'Замена аккумулятора', price: 4000},
+    { id: nextId++, name: 'Замена микрофона', price: 2500},
 ];
 
 const router = new Router();
@@ -78,6 +78,6 @@ router.delete('/api/services/:id', async (ctx, next) => {
 app.use(router.routes());
 app.use(router.allowedMethods());
 
-const port = process.env.PORT || 7070;
+const port = process.env.PORT || 3001;
 const server = http.createServer(app.callback());
 server.listen(port);
