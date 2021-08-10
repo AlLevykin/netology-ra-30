@@ -22,7 +22,7 @@ const ServiceForm = () => {
   const handleSubmit = event => {
     event.preventDefault();
     dispatch(clearServiceForm());
-    fetchForPosting(item.id, item.name, item.price, dispatch);
+    dispatch(fetchForPosting(item.id, item.name, item.price));
   };
 
   const handleCancel = () => dispatch(clearServiceForm());

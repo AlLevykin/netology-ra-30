@@ -56,7 +56,7 @@ export function apiServiceRequest(id) {
   return { type: API_SERVICE_REQUEST, payload: id };
 }
 
-export const fetchServices = async dispatch => {
+export const fetchServices = () => async (dispatch) => {
   dispatch(fetchServicesRequest());
   try {
     const response = await fetch(`${process.env.REACT_APP_API_URL}`);
@@ -71,7 +71,7 @@ export const fetchServices = async dispatch => {
   }
 }
 
-export const fetchForRemoving = async (id, dispatch) => {
+export const fetchForRemoving = (id) => async (dispatch) => {
   dispatch(apiServiceRequest(id));
   try {
     const response = await fetch(`${process.env.REACT_APP_API_URL}/${id}`, { method: 'DELETE' });
@@ -81,11 +81,11 @@ export const fetchForRemoving = async (id, dispatch) => {
     dispatch(removeService(id));
   }
   catch (e) {
-    fetchServices(dispatch);
+    dispatch(fetchServices());
   }
 }
 
-export const fetchForPosting = async (id, name, price, dispatch) => {
+export const fetchForPosting = (id, name, price) => async (dispatch) => {
   if (id !== 0) dispatch(apiServiceRequest(id));
   try {
     const response = await fetch(`${process.env.REACT_APP_API_URL}`, 
@@ -106,6 +106,6 @@ export const fetchForPosting = async (id, name, price, dispatch) => {
     }
   } 
   catch (e) {
-    fetchServices(dispatch); 
+    dispatch(fetchServices()); 
   }
 }

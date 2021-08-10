@@ -16,10 +16,10 @@ const ServiceList = () => {
 
   const dispatch = useDispatch();
 
-  useEffect(() => { fetchServices(dispatch) }, [dispatch]);
+  useEffect(() => { dispatch(fetchServices()) }, [dispatch]);
 
   const handleRemove = id => {
-    fetchForRemoving(id, dispatch);
+    dispatch(fetchForRemoving(id));
   };
 
   const handleEdit = ({ id, name, price }) => {
