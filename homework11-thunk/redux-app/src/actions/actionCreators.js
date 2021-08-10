@@ -86,7 +86,7 @@ export const fetchForRemoving = async (id, dispatch) => {
 }
 
 export const fetchForPosting = async (id, name, price, dispatch) => {
-  dispatch(apiServiceRequest(id));
+  if (id !== 0) dispatch(apiServiceRequest(id));
   try {
     const response = await fetch(`${process.env.REACT_APP_API_URL}`, 
     { 
@@ -102,10 +102,10 @@ export const fetchForPosting = async (id, name, price, dispatch) => {
     if (id === 0) {
       dispatch(addService(name, price));
     } else {
-      dispatch(editService(id, name, price));
+      dispatch(saveService(id, name, price));
     }
   } 
-  catch (e) { 
+  catch (e) {
     fetchServices(dispatch); 
   }
 }
