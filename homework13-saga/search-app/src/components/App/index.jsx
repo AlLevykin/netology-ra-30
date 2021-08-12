@@ -1,9 +1,8 @@
+import Skills from "../Skils";
 
 function App() {
   return (
-    <div>
-      app
-    </div>
+      <Skills />
   );
 }
 
