@@ -19,7 +19,7 @@ export default function skillsReducer(state = initialState, action) {
             return { ...state, items, loading: false, error: null };
         case CHANGE_SEARCH_FIELD:
             const { search } = action.payload;
-            return (search ? { ...state, search } : { ...state, items: [], search: ''});
+            return (search ? { ...state, search } : initialState);
         default:
             return state;
     }
