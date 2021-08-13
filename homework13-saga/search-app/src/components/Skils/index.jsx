@@ -16,21 +16,27 @@ const Skills = () => {
 
     return (
         <>
-            <div>
-                <input type="search" value={search} onChange={handleSearch} />
+            <div className="my-3">
+                <label for="searchField" className="form-label">Search</label>
+                <input type="search" className="form-control" id="searchField" value={search} onChange={handleSearch} />
             </div>
             {
-                !hasQuery && <div>Type something to search</div>
+                !hasQuery && <div className="alert alert-info my-3" role="alert">Type something to search</div>
             }
             {
-                hasQuery && loading && <div>searching...</div>
+                hasQuery && loading && <div className="alert alert-warning my-3" role="alert">
+                    <div className="spinner-grow spinner-grow-sm text-warning mx-3" role="status">
+                        <span className="visually-hidden">Loading...</span>
+                    </div>
+                    searching...
+                </div>
             }
             {
                 error ?
-                    <div>Error...</div>
+                    <div className="alert alert-danger my-3" role="alert">{error}</div>
                     :
-                    <ul>
-                        {items.map(o => <li key={o.id}>{o.name}</li>)}
+                    <ul className="list-group">
+                        {items.map(o => <li key={o.id} className="list-group-item">{o.name}</li>)}
                     </ul>
             }
         </>
