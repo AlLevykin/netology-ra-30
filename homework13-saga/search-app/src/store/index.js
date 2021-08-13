@@ -1,4 +1,4 @@
-import { createStore, combineReducers, applyMiddleware, compose, } from 'redux';
+import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import createSagaMiddleware from 'redux-saga';
 import skillsReducer from '../reducers/skillsReducer';
 import saga from '../sagas';
