@@ -4,12 +4,14 @@ import store from '../../store';
 import Categories from "./Categories";
 import Card from './Card';
 import Search from './Search';
+import LoadingButton from './LoadingButton';
 
 const Catalog = ({ hasSearchForm }) => {
 
     useEffect(() => {
+        if (!hasSearchForm) store.dispatch.catalog.setQuery('');
         store.dispatch.catalog.getItems();
-    }, []);
+    }, [hasSearchForm]);
 
     const { items, loading, success, error } = useSelector(
         (state) => ({ items: [...state.catalog.items], ...state.loading.models.catalog })
@@ -40,15 +42,18 @@ const Catalog = ({ hasSearchForm }) => {
             }
             {
                 success &&
-                <div className="row row-cols-3 g-4">
-                    {
-                        items.map(item =>
-                            <div className="col" key={item.id}>
-                                <Card id={item.id} title={item.title} price={item.price} image={item.images[0]} />
-                            </div>
-                        )
-                    }
-                </div>
+                <>
+                    <div className="row row-cols-3 g-4">
+                        {
+                            items.map(item =>
+                                <div className="col" key={item.id}>
+                                    <Card id={item.id} title={item.title} price={item.price} image={item.images[0]} />
+                                </div>
+                            )
+                        }
+                    </div>
+                    <LoadingButton />
+                </>
             }
         </section>
     );
