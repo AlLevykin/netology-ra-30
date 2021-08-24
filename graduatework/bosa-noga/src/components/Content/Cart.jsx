@@ -1,9 +1,13 @@
+import { useEffect } from 'react';
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
+import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
 import store from '../../store';
 
 const Cart = () => {
+
+    const history = useHistory();
 
     const [hasAgreement, setAgreement] = useState(false);
 
@@ -19,6 +23,27 @@ const Cart = () => {
             ...state.loading.effects.order.saveOrder
         })
     )
+
+    useEffect(() => {
+        if (error) {                    
+            store.dispatch.log.addMessage({
+                type: 'danger',
+                caption: 'Оформление заказа',
+                text: `Во время оформления заказа произошла ошибка (${error}).`
+            });
+            history.push('/support.html');
+        }
+    }, [error, history]); 
+    
+    useEffect(() => {
+        if (order.isSaved) {
+            store.dispatch.log.addMessage({
+                type: 'success',
+                caption: 'Оформление заказа',
+                text: 'Заказ успешно оформлен.'
+            });
+        }
+    }, [order.isSaved]);    
 
     const isOrderValid = order.items.length > 0 &&
         order.owner.phone &&
@@ -53,21 +78,6 @@ const Cart = () => {
                 <section className="cart d-flex justify-content-center">
                     <div className="spinner-grow align-middle" role="status">
                         <span className="visually-hidden">Оформление заказа ...</span>
-                    </div>
-                </section>
-            }
-            {
-                error &&
-                <section className="cart d-flex justify-content-center">
-                    <div className="alert alert-danger w-100" role="alert">
-                        {`Во время оформления заказа произошла ошибка (${error}).`}
-                        <button
-                            className="btn btn-danger"
-                            type="button"
-                            onClick={() => store.dispatch.order.saveOrder()}
-                        >
-                            Повторить
-                        </button>
                     </div>
                 </section>
             }

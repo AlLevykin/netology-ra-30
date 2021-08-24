@@ -13,13 +13,24 @@ const Product = () => {
 
     const history = useHistory();
 
+    const { product, loading, success, error } = useSelector(
+        (state) => ({ product: state.product, ...state.loading.models.product })
+    )    
+
     useEffect(() => {
         store.dispatch.product.getProduct(id);
     }, [id]);
 
-    const { product, loading, success, error } = useSelector(
-        (state) => ({ product: { ...state.product }, ...state.loading.models.product })
-    )
+    useEffect(() => {
+        if (error) {
+            store.dispatch.log.addMessage({
+                type: 'danger',
+                caption: 'Страница товара',
+                text: `Во время загрузки данных произошла ошибка (${error}). Попробуйте обновить страницу позже.`
+            });
+            history.push('/support.html');
+        }
+    }, [error, history]);
 
     const [selectedSize, selectSize] = useState(sizeParam);
 
@@ -33,9 +44,9 @@ const Product = () => {
 
     const [count, changeCount] = useState(
         (countParam < 1 || countParam > 10) ?
-        1
-        :
-        countParam
+            1
+            :
+            countParam
     );
 
     const changeCountHandler = (a) => {
@@ -65,20 +76,14 @@ const Product = () => {
                 </section>
             }
             {
-                error &&
-                <section className="catalog-item d-flex justify-content-center">
-                    <div className="alert alert-danger" role="alert">
-                        {`Во время загрузки данных произошла ошибка (${error}). Попробуйте обновить страницу позже.`}
-                    </div>
-                </section>
-            }
-            {
                 success &&
                 <section className="catalog-item">
                     <h2 className="text-center">{product.title}</h2>
                     <div className="row">
                         <div className="col-5">
-                            <img src={product.images[0]} className="img-fluid" alt={product.title} />
+                            <div className="ratio ratio-1x1">
+                                <img src={product.images[0]} className="card-img" alt={product.title} />
+                            </div>
                         </div>
                         <div className="col-7">
                             <table className="table table-bordered">

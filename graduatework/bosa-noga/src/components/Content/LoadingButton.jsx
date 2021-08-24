@@ -1,26 +1,33 @@
+import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
+import { useHistory } from "react-router-dom";
 import store from '../../store';
 
 const LoadingButton = () => {
 
+    const history = useHistory();
+
     const { hasMoreData, loading, error } = useSelector(
         (state) => ({ hasMoreData: state.catalog.hasMoreData, ...state.loading.models.catalog })
     )
+
+    useEffect(() => {
+        if (error) {
+            store.dispatch.log.addMessage({
+                type: 'danger',
+                caption: 'Каталог',
+                text: `Во время загрузки данных произошла ошибка (${error}). Попробуйте обновить страницу позже.`
+            });
+            history.push('/support.html');
+        }
+    }, [error, history]);    
 
     const onClickHandler = () => {
         store.dispatch.catalog.getItems();
     }
 
     return (
-        <>
-            {
-                error &&
-                <div className="row justify-content-center">
-                    <div className="alert alert-danger" role="alert">
-                        {`Во время загрузки данных произошла ошибка (${error}). Повторите загрузку позже.`}
-                    </div>
-                </div>
-            }            
+        <>            
             {
                 hasMoreData &&
                 <div className="text-center my-3">
@@ -31,7 +38,7 @@ const LoadingButton = () => {
                     >
                         {
                             loading &&
-                            <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true" />
+                            <span className="spinner-grow spinner-grow-sm" role="status" aria-hidden="true" />
                         }
                         Загрузить ещё
                     </button>

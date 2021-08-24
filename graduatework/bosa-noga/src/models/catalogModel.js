@@ -7,7 +7,7 @@ export const catalogModel = {
         updateItems(state, items) {
             let newItems = [];
             if (state.params.offset === 0) {
-                newItems = [...items];
+                newItems = items;
             } else {
                 newItems = [...state.items, ...items];
             }
@@ -22,7 +22,7 @@ export const catalogModel = {
             }
         },
         updateCategory(state, categoryId) {
-            return { params: { ...state.params, categoryId, offset: 0 }, items: [] }
+            return { ...state, params: { ...state.params, categoryId, offset: 0 } }
         },
         updateQuery(state, q) {
             return { ...state, params: { ...state.params, q } }
